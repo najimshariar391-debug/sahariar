@@ -14,7 +14,7 @@
         }
         .box {
             background: white;
-            max-width: 400px;
+            max-width: 450px;
             margin: auto;
             padding: 30px;
             border-radius: 15px;
@@ -23,13 +23,7 @@
         h1 {
             color: #5b4bdb;
         }
-        input {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid gray;
-        }
         button {
-            background: #28a745;
             color: white;
             padding: 10px 20px;
             font-size: 16px;
@@ -38,7 +32,11 @@
             cursor: pointer;
             font-weight: bold;
             margin-top: 10px;
+            transition: 0.2s;
         }
+        .btn-green { background: #28a745; }
+        .btn-blue { background: #007bff; margin-top: 15px; }
+        button:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -54,14 +52,21 @@
         <!-- লটারি মেকার -->
         <div style="background: #f9f9f9; border: 2px dashed #5b4bdb; padding: 15px; border-radius: 10px; margin-top: 20px;">
             <h3 style="margin-top: 0;">🎲 লাকি নাম্বার লটারি 🎲</h3>
-            <button onclick="pickWinner()">নম্বর তুলুন</button>
+            <button class="btn-green" onclick="pickWinner()">নম্বর তুলুন</button>
             <h1 id="winnerNumber" style="color: #dc3545; font-size: 40px; margin: 10px 0 0 0;">--</h1>
+        </div>
+
+        <!-- কোটস জেনারেটর -->
+        <div style="background: #fff3cd; border: 1px solid #ffeeba; padding: 20px; border-radius: 10px; margin-top: 25px;">
+            <h3 style="margin-top: 0; color: #856404;">💡 আজকের অনুপ্রেরণা 💡</h3>
+            <p id="quoteDisplay" style="font-size: 18px; font-style: italic; color: #333; min-height: 50px; margin: 15px 0;">"বাটনটিতে ক্লিক করে একটি সুন্দর উক্তি পড়ুন।"</p>
+            <button class="btn-blue" onclick="getNewQuote()">নতুন উক্তি দেখুন</button>
         </div>
     </div>
 
     <!-- জাভাস্ক্রিপ্ট কোড -->
     <script>
-        // ঘড়ির ফাংশন
+        // ১. ঘড়ির ফাংশন
         function showTime() {
             let date = new Date();
             let h = date.getHours(); 
@@ -83,12 +88,30 @@
         }
         showTime();
 
-        // লটারির ফাংশন
+        // ২. লটারির ফাংশন
         function pickWinner() {
             let luckyNumber = Math.floor(Math.random() * 100) + 1;
             document.getElementById("winnerNumber").innerText = luckyNumber;
+        }
+
+        // ৩. কোটস জেনারেটরের ফাংশন (উক্তির তালিকা)
+        const quotes = [
+            "আজকের দিনটি আপনার জীবনের সেরা দিনগুলোর একটি হতে পারে, চেষ্টা করতে থাকুন।",
+            "সাফল্যের কোনো গোপন মন্ত্র নেই, এটি হলো প্রস্তুতি, কঠোর পরিশ্রম আর ব্যর্থতা থেকে শেখার ফল।",
+            "যদি তুমি সত্যি কিছু করতে চাও তবে পথ খুঁজে পাবে, আর যদি না চাও তবে অজুহাত খুঁজে পাবে।",
+            "ভুল করা মানুষ হওয়া বন্ধ করো না, বরং ভুল থেকে শিখে আরও উন্নত মানুষ হও।",
+            "কখনও হাল ছেড়ো না! আজকের দিনটি কঠিন, কাল হয়তো আরও কঠিন হবে, কিন্তু পরশু নতুন সূর্য উঠবেই।",
+            "অন্যের মতো হওয়ার চেষ্টা করার চেয়ে নিজের সেরা সংস্করণ হওয়া অনেক ভালো।"
+        ];
+
+        function getNewQuote() {
+            // তালিকা থেকে একটি এলোমেলো উক্তি সিলেক্ট করবে
+            let randomNumber = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quoteDisplay").innerText = "${quotes[randomNumber]}";
         }
     </script>
 
 </body>
 </html>
+লিখুন
+Mohammad Ali Joardar-এ লিখুন
