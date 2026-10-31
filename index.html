@@ -94,7 +94,7 @@
             document.getElementById("winnerNumber").innerText = luckyNumber;
         }
 
-        // ৩. কোটস জেনারেটরের ফাংশন (উক্তির তালিকা)
+        // ৩. কোটস জেনারেটরের ফাংশন
         const quotes = [
             "আজকের দিনটি আপনার জীবনের সেরা দিনগুলোর একটি হতে পারে, চেষ্টা করতে থাকুন।",
             "সাফল্যের কোনো গোপন মন্ত্র নেই, এটি হলো প্রস্তুতি, কঠোর পরিশ্রম আর ব্যর্থতা থেকে শেখার ফল।",
@@ -105,13 +105,12 @@
         ];
 
         function getNewQuote() {
-            // তালিকা থেকে একটি এলোমেলো উক্তি সিলেক্ট করবে
             let randomNumber = Math.floor(Math.random() * quotes.length);
-            document.getElementById("quoteDisplay").innerText = "${quotes[randomNumber]}";
+            document.getElementById("quoteDisplay").innerText = quotes[randomNumber];
         }
     </script>
 
 </body>
 </html>
 লিখুন
-Mohammad Ali Joardar-এ লিখুন
+shahariar-এ লিখুন
