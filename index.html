@@ -8,67 +8,87 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #e0e7ff;
+            background: #ede7f6;
             text-align: center;
             padding: 50px 15px;
         }
-
         .box {
             background: white;
             max-width: 400px;
             margin: auto;
             padding: 30px;
             border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
         }
-
         h1 {
             color: #5b4bdb;
         }
-
         input {
             padding: 12px;
             border-radius: 8px;
             border: 1px solid gray;
         }
-
         button {
-            background: #5b4bdb;
+            background: #28a745;
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
+            font-size: 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 15px;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
-
 <body>
+
     <div class="box">
-        <h1>Welcome to My Website!</h1>
-        <p>This is my first website.</p>
+        <h1>স্বাগতম আমার ওয়েবসাইটে!</h1>
+        
+        <!-- ডিজিটাল ঘড়ি -->
+        <div style="font-family: 'Courier New', Courier, monospace; background: #222; color: #00ff00; padding: 15px; font-size: 30px; font-weight: bold; text-align: center; border-radius: 10px; margin: 20px 0;">
+            <span id="clock">00:00:00 PM</span>
+        </div>
 
-        <input id="name" type="text" placeholder="Enter your name">
-        <br>
-
-        <button onclick="welcome()">Click Me</button>
-
-        <p id="message"></p>
+        <!-- লটারি মেকার -->
+        <div style="background: #f9f9f9; border: 2px dashed #5b4bdb; padding: 15px; border-radius: 10px; margin-top: 20px;">
+            <h3 style="margin-top: 0;">🎲 লাকি নাম্বার লটারি 🎲</h3>
+            <button onclick="pickWinner()">নম্বর তুলুন</button>
+            <h1 id="winnerNumber" style="color: #dc3545; font-size: 40px; margin: 10px 0 0 0;">--</h1>
+        </div>
     </div>
 
+    <!-- জাভাস্ক্রিপ্ট কোড -->
     <script>
-        function welcome() {
-            let name = document.getElementById("name").value.trim();
+        // ঘড়ির ফাংশন
+        function showTime() {
+            let date = new Date();
+            let h = date.getHours(); 
+            let m = date.getMinutes(); 
+            let s = date.getSeconds(); 
+            let session = "AM";
+            
+            if (h == 0) { h = 12; }
+            if (h > 12) { h = h - 12; session = "PM"; }
+            
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            
+            let time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("clock").innerText = time;
+            
+            setTimeout(showTime, 1000);
+        }
+        showTime();
 
-            if (name === "") {
-                document.getElementById("message").textContent =
-                    "Please enter your name!";
-            } else {
-                document.getElementById("message").textContent =
-                    "Welcome, " + name + "!";
-            }
+        // লটারির ফাংশন
+        function pickWinner() {
+            let luckyNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("winnerNumber").innerText = luckyNumber;
         }
     </script>
+
 </body>
 </html>
-
